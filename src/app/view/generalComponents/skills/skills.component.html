@@ -1,0 +1,22 @@
+<h3 class="text-base">Minhas Competencias</h3>
+<div
+  [ngClass]="{'edit-order-skills': isChangeOrder}"
+  class="skills"
+  cdkDropList
+  [cdkDropListData]="skills"
+  (cdkDropListDropped)="drop($event)"
+  [cdkDropListDisabled]="!isChangeOrder"
+>
+  <div
+    class="skill"
+    *ngFor="let skill of skills"
+    (click)="openSkill(skill.id)"
+    cdkDrag
+  >
+    <p class="text-base">{{ skill.name }}</p>
+  </div>
+</div>
+<div class="button" *ngIf="editable">
+  <button class="button" (click)="setChangeOrder(!isChangeOrder)"><span class="text-base">{{ isChangeOrder ? 'Salvar Ordem' : 'Editar Ordem' }}</span></button>
+  <button class="button" (click)="openAddSkill()"><span class="text-base">Adicionar</span></button>
+</div>

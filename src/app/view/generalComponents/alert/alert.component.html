@@ -1,0 +1,7 @@
+<div class="alerts" style="--time-for-delete-image: {{ alertService.timeForDeleteImage }}ms;">
+  <div class="alert" *ngFor="let alert of alertService.alerts" (click)="alertService.deleteAlert(alert.id)">
+    <p class="text-base">
+      {{ alert.message }}
+    </p>
+  </div>
+</div>

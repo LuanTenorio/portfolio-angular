@@ -1,0 +1,42 @@
+h3{
+  font-size: 22px;
+}
+.skills{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+.edit-order-skills{
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  /* gap: 15px; */
+  align-items: stretch;
+}
+.edit-order-skills .skill{
+  width: 100%;
+}
+.skill{
+  width: var(--item-width);
+  padding: 12px 0px;
+  background: #FFCEC0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 7px;
+  cursor: pointer;
+  box-shadow: -2px 2px 3px 1px #00000029;
+  margin-bottom: var(--item-margin-bottom);
+}
+.skill p{
+  font-size: 18px;
+}
+
+@media screen and (max-width: 585px){
+  .skills{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}

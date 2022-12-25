@@ -1,0 +1,56 @@
+<div class="background" (click)="close()">
+  <div class="project" (drop)="dropImages($event)" (click)="$event.stopPropagation()">
+    <a [href]="project.link">
+      <div class="carrossel" #carrossel style="--amount-images: {{project.images.length}};">
+        <div class="scroll">
+          <div
+            alt="Imagem do Projeto"
+            *ngFor="let img of project.images"
+            class="img"
+            [ngStyle]="{'background-image': 'url(storage/' + img.path + ')'}"
+          >
+          </div>
+        </div>
+      </div>
+      <svg *ngIf="project.images.length" (click)="moveCarrossel(false, project.images.length, carrossel); $event.preventDefault()" class="left-arrow" width="37" height="37" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.535 48.242L11.707 45.414L32.292 24.828L11.707 4.242L14.535 1.414L37.949 24.828L14.535 48.242Z" fill="#CCCCCC"/>
+      </svg>
+      <svg *ngIf="project.images.length" (click)="moveCarrossel(true, project.images.length, carrossel); $event.preventDefault()" class="right-arrow" width="37" height="37" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14.535 48.242L11.707 45.414L32.292 24.828L11.707 4.242L14.535 1.414L37.949 24.828L14.535 48.242Z" fill="#CCCCCC"/>
+      </svg>
+    </a>
+
+    <p
+      class="text-base description"
+      [attr.contenteditable]="editable"
+      (blur)="changeElement($event, 'description')"
+    >
+      {{ project.description }}
+    </p>
+
+    <div class="project-footer">
+      <button class="button" (click)="deleteProject()" *ngIf="editable"><span>Deletar Projeto</span></button>
+      <button class="button" (click)="editImages()" *ngIf="editable"><span>{{ isEditImages ? 'Salvar Alterações' : 'Editar Imagens' }}</span></button>
+      <button class="button" (click)="addImage(image)" *ngIf="isEditImages && editable"><span>Adicionar Imagem {{newImages.length == 0 ? '' : '(' + newImages.length + ')'}}</span></button>
+      <button class="button" (click)="goToLink(project.link)"><span>Visitar</span></button>
+      <input type="file" #image multiple="multiple" (change)="changedFile($event, true)">
+    </div>
+    <div
+      class="images"
+      *ngIf="isEditImages && editable"
+      cdkDropList
+      [cdkDropListData]="project.images"
+      (cdkDropListDropped)="drop($event)"
+      [cdkDropListDisabled]="!isEditImages"
+    >
+      <div
+        class="img"
+        *ngFor="let image of project.images, let i = index"
+        [ngStyle]="{'background-image': 'url(storage/' + image.path + ')'}"
+        cdkDrag
+      >
+        <span class="close-image" (click)="deleteImage(i)"></span>
+      </div>
+    </div>
+  </div>
+</div>

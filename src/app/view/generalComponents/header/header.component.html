@@ -1,0 +1,11 @@
+<header>
+  <ul>
+    <li
+      class="text-base"
+      *ngFor="let option of headerOptions, let i = index"
+      (click)="emitChangeScroll(i)"
+    >
+      {{ option }}
+    </li>
+  </ul>
+</header>

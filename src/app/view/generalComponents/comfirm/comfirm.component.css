@@ -1,0 +1,24 @@
+.box{
+    background: #fff8f6;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    border-radius: 7px;
+}
+p{
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: .65px;
+    text-transform: capitalize;
+}
+.buttons{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}

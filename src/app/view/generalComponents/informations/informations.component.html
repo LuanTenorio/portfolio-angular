@@ -1,0 +1,67 @@
+
+<label
+  class="label-img"
+  for="infoCover"
+  *ngIf="infos !== undefined && infos.cover !== null"
+  [ngClass]="{click: editable}"
+>
+  <!-- <img
+    [src]="'storage/' + infos.cover"
+    alt="Minha Foto"
+    *ngIf="infos !== undefined && infos.cover !== null"
+  > -->
+  <!-- <div *ngIf="infos !== undefined && infos.cover !== null" class="img mobile" style="background-image: url('storage/{{ infos.cover }}')"></div> -->
+  <div class="img mobile" [ngStyle]="{'background-image': 'url(storage/' + infos.cover + ')'}">
+    <input
+      type="file"
+      id="infoCover"
+      (change)="changeElement($event, 'cover')"
+      *ngIf="editable"
+    >
+  </div>
+</label>
+
+<div class="texts" *ngIf="infos !== undefined">
+  <h1
+    class="text-base"
+    [attr.contenteditable]="editable"
+    (blur)="changeElement($event, 'name')"
+  >
+    {{ infos.name }}
+  </h1>
+  <div class="text-img">
+    <label
+    class="label-img"
+    for="infoCover"
+    *ngIf="infos !== undefined && infos.cover !== null"
+    [ngClass]="{click: editable}"
+    >
+      <div class="img pc" [ngStyle]="{'background-image': 'url(storage/' + infos.cover + ')'}"></div>
+    </label>
+    <p
+      class="text-base"
+      [attr.contenteditable]="editable"
+      (blur)="changeElement($event, 'description')"
+    >
+      {{ infos.description }}
+    </p>
+  </div>
+</div>
+<div class="social-midia" *ngIf="editable && infos !== undefined">
+  <div class="midia">
+    <label class="text-base" for="edit-footer-github_link">GitHub</label>
+    <input type="text" id="edit-footer-github_link" (blur)="changeElement($event, 'github_link')" [value]="infos.github_link">
+  </div>
+  <div class="midia">
+    <label class="text-base" for="edit-footer-linkedin_link">Linkedin</label>
+    <input type="text" id="edit-footer-linkedin_link" (blur)="changeElement($event, 'linkedin_link')" [value]="infos.linkedin_link">
+  </div>
+  <div class="midia">
+    <label class="text-base" for="edit-footer-instagram_link">Instagram</label>
+    <input type="text" id="edit-footer-instagram_link" (blur)="changeElement($event, 'instagram_link')" [value]="infos.instagram_link">
+  </div>
+  <div class="midia">
+    <label class="text-base" for="edit-footer-email">Email</label>
+    <input type="text" id="footer-email" (blur)="changeElement($event, 'email')" [value]="infos.email">
+  </div>
+</div>

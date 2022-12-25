@@ -1,0 +1,33 @@
+main{
+  padding: 20px 4vw;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+app-informations{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 30px;
+  padding: 15px 0px;
+}
+app-skills, app-projects{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  gap: 35px;
+  padding: 15px 0px;
+}
+
+@media screen and (max-width: 900px){
+  app-informations{
+    gap: 30px;
+  }
+}
+
+@media screen and (max-width: 480px){
+  main{
+    gap: 5px;
+  }
+}

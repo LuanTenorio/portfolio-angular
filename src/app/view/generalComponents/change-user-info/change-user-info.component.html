@@ -1,0 +1,18 @@
+<div class="background" (click)="close()">
+  <form action="index.html" (click)="$event.stopPropagation()" [formGroup]="form" (submit)="changeInfos()">
+    <div class="field">
+      <label for="change-user-info-form-login">Novo Login</label>
+      <input type="text" id="change-user-info-form-login" formControlName="login" placeholder="Novo Login">
+    </div>
+    <div class="field">
+      <label for="change-user-info-form-password">Nova Senha</label>
+      <input type="text" id="change-user-info-form-password" formControlName="password" placeholder="Nova Senha">
+    </div>
+    <div class="field">
+      <label for="change-user-info-form-current-password">Senha Atual</label>
+      <input type="text" id="change-user-info-form-current-password" formControlName="currentPassword" placeholder="Senha Atual">
+    </div>
+
+    <button class="submit">Alterar</button>
+  </form>
+</div>

@@ -1,0 +1,50 @@
+footer{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 4vw;
+  position: relative;
+}
+footer::after{
+  content: '';
+  position: absolute;
+  top: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 5%;
+  height: 2px;
+  border-radius: 5px;
+  background: #ffcec0;
+  box-shadow: 0px 0px 4px #ffffff4d;
+  transition: .75s;
+  animation: line 1.2s forwards;
+}
+.socialNetworks{
+  display: flex;
+  gap: 30px;
+}
+
+p{
+  font-size: 19px;
+  letter-spacing: .6px;
+  font-weight: 600;
+}
+
+@media screen and (max-width: 580px){
+  footer{
+    flex-direction: column-reverse;
+    gap: 20px;
+    padding: 20px 4vw;
+  }
+}
+
+@media screen and (max-width: 380px){
+  p{
+    font-size: 16px;
+  }
+
+  .socialNetworks{
+    display: flex;
+    gap: 15px;
+  }
+}

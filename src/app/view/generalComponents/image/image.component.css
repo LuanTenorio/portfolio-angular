@@ -1,0 +1,9 @@
+img{
+  max-width: 87.5vw;
+  max-height: 87.5vh;
+  position: relative;
+  left: 50vw;
+  top: 50vh;
+  transform: translate(-50%, -50%);
+  box-shadow: -2px 2px 6px 0px #00000029;
+}

@@ -1,0 +1,44 @@
+.alerts{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  min-width: 35vw;
+}
+.alert{
+  width: 100%;
+  display: flex;
+  cursor: pointer;
+  background: #FFCEC0;
+  padding: 10px 15px;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: -2px 2px 3px 1px #00000029;
+  border-radius: 5px 5px 0px 0px;
+  position: relative;
+}
+.alert::before{
+  content: '';
+  background: var(--main-text-color);
+  width: 0px;
+  height: 2px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  animation: line-for-delete var(--time-for-delete-image) linear forwards;
+}
+p{
+  font-size: 18px;
+  font-weight: 500;
+}
+
+@keyframes line-for-delete {
+  from{
+    width: 0%;
+  }
+  to{
+    width: 100%;
+  }
+}

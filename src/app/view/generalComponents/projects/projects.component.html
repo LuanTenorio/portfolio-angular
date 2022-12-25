@@ -1,0 +1,57 @@
+<h3 class="text-base">Projetos</h3>
+<div
+  class="projects"
+  cdkDropList
+  [cdkDropListData]="landingPageService.projects"
+  (cdkDropListDropped)="drop($event)"
+  [cdkDropListDisabled]="!isChangeOrder"
+  [ngClass]="{'edit-order-projects': isChangeOrder}"
+>
+  <div cdkDrag class="project" *ngFor="let project of landingPageService.projects">
+    <a [href]="project.link">
+      <div class="carrossel" #carrossel style="--amount-images: {{project.images.length}};">
+        <div class="scroll">
+          <div
+            alt="Imagem do Projeto"
+            *ngFor="let img of project.images"
+            class="img"
+            [ngStyle]="{'background-image': 'url(storage/' + img.path + ')'}"
+          ></div>
+        </div>
+      </div>
+    </a>
+
+    <div class="buttons-carrossel">
+      <label
+        *ngFor="let i of [1, 2, 3, 4, 5]"
+        [ngClass]="{'left': i < 3, 'center': i == 3, 'right': i > 3}"
+        (click)="moveCarrossel(i > 3 ? true : i < 3 ? false : null, project.images.length, carrossel)"
+        style="--amout:{{ i == 3 ? 3 : i == 2 || i == 4 ? 2 : 1}}px"
+      ></label>
+    </div>
+
+    <p class="text-base description">
+      {{ project.description }}
+    </p>
+
+    <div class="project-footer">
+      <button class="button" (click)="openDetailsProject(project)"><span>Espandir</span></button>
+      <button class="button" (click)="goToLink(project.link)"><span>Visitar</span></button>
+    </div>
+  </div>
+</div>
+<div class="button" *ngIf="editable">
+  <button
+    class="button"
+    (click)="setChangeOrder(!isChangeOrder)"
+  >
+    <span class="text-base">{{ isChangeOrder ? 'Salvar Ordem' : 'Editar Ordem' }}</span>
+  </button>
+  <button
+    type="button"
+    class="button"
+    (click)="openAddProject()"
+  >
+    <span>Adicionar</span>
+  </button>
+</div>
